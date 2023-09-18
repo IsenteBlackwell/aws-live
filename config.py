@@ -1,7 +1,7 @@
-customhost = "database-1.cvtphaopa6os.us-east-1.rds.amazonaws.com"
-customuser = "aws_user"
-custompass = "Bait3273"
-customdb = "employee"
-custombucket = "limwenyuan-employee"
+customhost = "database-assignment.cvtphaopa6os.us-east-1.rds.amazonaws.com"
+customuser = "admin"
+custompass = "abcd1234"
+customdb = "database-assignment"
+custombucket = "limwenyuan-administrator"
 customregion = "us-east-1"
 

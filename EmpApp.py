@@ -28,19 +28,19 @@ def home():
 
 @app.route("/about", methods=['POST'])
 def about():
-    return render_template('www.tarc.edu.my')
+    return render_template('www.intellipaat.com')
 
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
-    emp_id = request.form['emp_id']
+    admin_id = request.form['admin_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    pri_skill = request.form['pri_skill']
-    location = request.form['location']
-    emp_image_file = request.files['emp_image_file']
+    email = request.form['email']
+    active_status = request.form['active_status']
+    admin_image_file = request.files['admin_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO Administrator VALUES (%s, %s, %s, %s, %d)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -48,11 +48,11 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (admin_id, first_name, last_name, email, active_status))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        admin_image_file_name_in_s3 = "admin-id-" + str(admin_id) + "_image_file"
         s3 = boto3.resource('s3')
 
         try:
